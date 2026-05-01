@@ -16,3 +16,106 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
 @media (max-width:430px) and (orientation:portrait){.top-area{height:30dvh;min-height:30dvh;grid-template-columns:47% 1fr 48px}.guide-char{width:198px!important;height:198px!important;transform:scale(1.18) translate(0,3px)!important}h2{font-size:clamp(24px,7.2vw,38px)!important;transform:translateX(-3px)}.choices{height:calc(70dvh - 24px);gap:7px}.choice{border-radius:28px;padding:7px 3px 10px}.choice::before{inset:6px;border-radius:22px}.emoji{font-size:clamp(138px,41vw,230px)!important;height:63%}.label{font-size:clamp(23px,6.9vw,38px)!important}}
 @media (max-height:730px) and (orientation:portrait){.top-area{height:28dvh;min-height:28dvh}.guide-char{width:180px!important;height:180px!important;transform:scale(1.12) translate(0,0)!important}.choices{height:calc(72dvh - 24px)}.emoji{font-size:clamp(130px,39vw,220px)!important}}
 @media (orientation:landscape){.top-area{min-height:24dvh;height:24dvh;grid-template-columns:28% 1fr 50px}.guide-char{width:120px!important;height:120px!important;transform:scale(1.05)!important}.choices{height:auto}.emoji{font-size:clamp(80px,20vw,180px)!important}}
+
+/* =========================================================
+   yuseisuki3 visual tuning 2026-05-01
+   目的：
+   - 上エリアの余白を減らす
+   - 案内キャラを大きく見せる
+   - 選択肢カードには被らせすぎない
+   - index.html / script.js は変更しない
+   ========================================================= */
+
+@media (orientation: portrait) {
+  .game-screen {
+    gap: 0 !important;
+    padding-top: max(2px, env(safe-area-inset-top)) !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-bottom: max(4px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .top-area {
+    height: 24dvh !important;
+    min-height: 24dvh !important;
+    grid-template-columns: 44% 1fr 52px !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .dino-wrap {
+    width: 100% !important;
+    height: 100% !important;
+    place-items: center !important;
+    overflow: visible !important;
+    transform: translate(4px, 10px) !important;
+    z-index: 3 !important;
+  }
+
+  .guide-char {
+    width: min(62vw, 285px) !important;
+    height: min(62vw, 285px) !important;
+    transform: scale(1.28) translate(4px, 10px) !important;
+    object-fit: contain !important;
+    transform-origin: center center !important;
+    filter: drop-shadow(0 10px 0 rgba(70,80,90,.09)) !important;
+  }
+
+  h2 {
+    font-size: clamp(27px, 8.1vw, 48px) !important;
+    line-height: 1.02 !important;
+    transform: translate(4px, 10px) !important;
+    text-align: center !important;
+    z-index: 4 !important;
+  }
+
+  .sound-btn {
+    transform: translateY(8px) !important;
+    z-index: 5 !important;
+  }
+
+  .choices {
+    height: calc(76dvh - 18px) !important;
+    gap: 7px !important;
+    margin-top: -2px !important;
+  }
+
+  .choice {
+    padding-top: 5px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .emoji {
+    height: 64% !important;
+    font-size: clamp(142px, 42vw, 255px) !important;
+  }
+
+  .label {
+    font-size: clamp(24px, 7.1vw, 42px) !important;
+  }
+}
+
+/* iPhoneのSafariアドレスバー表示で縦が狭い時の保険 */
+@media (max-height: 740px) and (orientation: portrait) {
+  .top-area {
+    height: 23dvh !important;
+    min-height: 23dvh !important;
+  }
+
+  .guide-char {
+    width: min(58vw, 260px) !important;
+    height: min(58vw, 260px) !important;
+    transform: scale(1.22) translate(2px, 8px) !important;
+  }
+
+  h2 {
+    font-size: clamp(25px, 7.7vw, 42px) !important;
+    transform: translate(3px, 8px) !important;
+  }
+
+  .choices {
+    height: calc(77dvh - 18px) !important;
+  }
+}
