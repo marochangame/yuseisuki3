@@ -1,13 +1,26 @@
 
-/* ===== FINAL FIX ONLY (safe patch) ===== */
+/* ===== PWA最適化（ホーム画面基準） ===== */
 
-/* キャラを倍サイズ */
-.game-screen:not(.hide) .guide-char {
-  width: min(90vw, 420px) !important;
-  height: min(90vw, 420px) !important;
+/* 上エリアを少しコンパクトに */
+.game-screen:not(.hide) .top-area {
+  height: 16dvh !important;
+  min-height: 16dvh !important;
+  background: linear-gradient(180deg, #fff7cc 0%, #ffeaa7 100%) !important;
 }
 
-/* 上の背景をやわらか黄色に */
-.game-screen:not(.hide) .top-area {
-  background: linear-gradient(180deg, #fff7cc 0%, #ffeaa7 100%) !important;
+/* キャラをしっかり上寄せ＋大きく */
+.game-screen:not(.hide) .dino-wrap {
+  display: grid !important;
+  place-items: start center !important;
+  padding-top: 4px !important;
+}
+
+.game-screen:not(.hide) .guide-char {
+  width: min(95vw, 460px) !important;
+  height: min(95vw, 460px) !important;
+}
+
+/* 下の選択肢を少し持ち上げる */
+.game-screen:not(.hide) .choices {
+  margin-top: -6px !important;
 }
