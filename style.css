@@ -18,116 +18,161 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
 @media (orientation:landscape){.top-area{min-height:24dvh;height:24dvh;grid-template-columns:28% 1fr 50px}.guide-char{width:120px!important;height:120px!important;transform:scale(1.05)!important}.choices{height:auto}.emoji{font-size:clamp(80px,20vw,180px)!important}}
 
 /* =========================================================
-   yuseisuki3 GAME SCREEN ONLY tuning
-   - スタート画面には効かせない
-   - ゲーム画面だけ、キャラ大きめ・余白少なめ
-   - 削除不要。style.css上書き用。
+   yuseisuki3 app layout: top character panel + colorful choices
+   - アプリ再現用。画像生成ではない。
+   - スタート画面は触らない。
+   - ゲーム画面だけ変更。
+   - 上の文字は非表示。
    ========================================================= */
 
 @media (orientation: portrait) {
   .game-screen:not(.hide) {
     gap: 0 !important;
-    padding-top: max(2px, env(safe-area-inset-top)) !important;
+    padding-top: max(4px, env(safe-area-inset-top)) !important;
     padding-left: 8px !important;
     padding-right: 8px !important;
     padding-bottom: max(5px, env(safe-area-inset-bottom)) !important;
   }
 
+  /* 上の白い四角スペース */
   .game-screen:not(.hide) .top-area {
-    height: 24dvh !important;
-    min-height: 24dvh !important;
-    grid-template-columns: 45% 1fr 52px !important;
-    align-items: center !important;
-    gap: 0 !important;
+    position: relative !important;
+    height: 31dvh !important;
+    min-height: 31dvh !important;
+    display: block !important;
+    margin: 0 4px 8px !important;
     padding: 0 !important;
-    margin: 0 !important;
     overflow: visible !important;
+    background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.9)) !important;
+    border: 8px solid rgba(255,255,255,.95) !important;
+    border-radius: 30px !important;
+    box-shadow: 0 9px 0 rgba(49,69,80,.14), inset 0 0 0 5px rgba(255,214,80,.55) !important;
   }
 
+  /* 上の文字は使わない */
+  .game-screen:not(.hide) .top-area h2 {
+    display: none !important;
+  }
+
+  /* キャラを四角スペースの上に配置 */
   .game-screen:not(.hide) .dino-wrap {
-    width: 100% !important;
-    height: 100% !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: -62px !important;
+    width: 230px !important;
+    height: 180px !important;
+    transform: translateX(-50%) !important;
     display: grid !important;
     place-items: center !important;
     overflow: visible !important;
-    transform: translate(2px, 16px) !important;
-    z-index: 3 !important;
+    z-index: 6 !important;
+    animation: idleBob 2.2s ease-in-out infinite !important;
   }
 
   .game-screen:not(.hide) .guide-char {
-    width: min(64vw, 285px) !important;
-    height: min(64vw, 285px) !important;
+    width: 210px !important;
+    height: 210px !important;
     object-fit: contain !important;
-    transform: scale(1.34) translate(4px, 18px) !important;
+    transform: none !important;
     transform-origin: center center !important;
     filter: drop-shadow(0 10px 0 rgba(70,80,90,.09)) !important;
   }
 
-  .game-screen:not(.hide) h2 {
-    font-size: clamp(28px, 8.2vw, 48px) !important;
-    line-height: 1.02 !important;
-    text-align: center !important;
-    transform: translate(4px, 14px) !important;
-    z-index: 4 !important;
-  }
-
+  /* 音ボタンは右上 */
   .game-screen:not(.hide) .sound-btn {
-    width: 50px !important;
-    height: 50px !important;
-    transform: translateY(12px) !important;
-    z-index: 5 !important;
+    position: absolute !important;
+    right: 16px !important;
+    top: 18px !important;
+    width: 58px !important;
+    height: 58px !important;
+    border-radius: 19px !important;
+    font-size: 26px !important;
+    z-index: 7 !important;
   }
 
+  /* 選択肢エリア */
   .game-screen:not(.hide) .choices {
-    height: calc(76dvh - 18px) !important;
-    gap: 7px !important;
-    margin-top: -2px !important;
+    height: calc(69dvh - 20px) !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
     padding: 0 !important;
+    margin: 0 !important;
   }
 
   .game-screen:not(.hide) .choice {
-    padding-top: 5px !important;
-    padding-bottom: 8px !important;
+    border-radius: 28px !important;
+    padding: 7px 4px 10px !important;
+    box-shadow: 0 9px 0 rgba(49,69,80,.15), inset 0 -5px 0 rgba(255,255,255,.25) !important;
+    overflow: hidden !important;
+  }
+
+  /* 左カード：グリーン */
+  .game-screen:not(.hide) .choice:nth-child(1) {
+    background: linear-gradient(180deg, #d9ffbc 0%, #8ee954 100%) !important;
+  }
+
+  /* 右カード：オレンジ */
+  .game-screen:not(.hide) .choice:nth-child(2) {
+    background: linear-gradient(180deg, #ffd875 0%, #ffad35 100%) !important;
+  }
+
+  .game-screen:not(.hide) .choice::before {
+    inset: 7px !important;
+    border: 4px solid rgba(255,255,255,.92) !important;
+    border-radius: 23px !important;
   }
 
   .game-screen:not(.hide) .emoji {
     height: 64% !important;
     font-size: clamp(142px, 42vw, 255px) !important;
+    filter: drop-shadow(0 8px 0 rgba(70,80,90,.08)) !important;
   }
 
   .game-screen:not(.hide) .label {
     font-size: clamp(24px, 7.1vw, 42px) !important;
+    background: rgba(255,255,255,.86) !important;
+    color: rgba(48,64,74,.9) !important;
+    padding: .28em .62em !important;
+  }
+
+  .game-screen:not(.hide) .adult-check {
+    height: 18px !important;
+    line-height: 18px !important;
+    margin-top: 1px !important;
   }
 }
 
-/* Safariのアドレスバー表示で縦が狭い時だけ、少し抑える */
+/* 縦が狭いSafari用 */
 @media (max-height: 740px) and (orientation: portrait) {
   .game-screen:not(.hide) .top-area {
-    height: 23dvh !important;
-    min-height: 23dvh !important;
+    height: 29dvh !important;
+    min-height: 29dvh !important;
+  }
+
+  .game-screen:not(.hide) .dino-wrap {
+    top: -55px !important;
   }
 
   .game-screen:not(.hide) .guide-char {
-    width: min(60vw, 265px) !important;
-    height: min(60vw, 265px) !important;
-    transform: scale(1.26) translate(2px, 14px) !important;
-  }
-
-  .game-screen:not(.hide) h2 {
-    font-size: clamp(26px, 7.8vw, 43px) !important;
-    transform: translate(3px, 12px) !important;
+    width: 190px !important;
+    height: 190px !important;
   }
 
   .game-screen:not(.hide) .choices {
-    height: calc(77dvh - 18px) !important;
+    height: calc(71dvh - 20px) !important;
+  }
+
+  .game-screen:not(.hide) .emoji {
+    font-size: clamp(134px, 40vw, 235px) !important;
   }
 }
 
-/* 横画面は安全優先で控えめ */
+/* 横画面は崩れ防止で控えめ */
 @media (orientation: landscape) {
-  .game-screen:not(.hide) .guide-char {
-    width: 130px !important;
-    height: 130px !important;
-    transform: scale(1.08) !important;
+  .game-screen:not(.hide) .top-area {
+    height: 26dvh !important;
+    min-height: 26dvh !important;
   }
 }
