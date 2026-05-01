@@ -18,11 +18,12 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
 @media (orientation:landscape){.top-area{min-height:24dvh;height:24dvh;grid-template-columns:28% 1fr 50px}.guide-char{width:120px!important;height:120px!important;transform:scale(1.05)!important}.choices{height:auto}.emoji{font-size:clamp(80px,20vw,180px)!important}}
 
 /* =========================================================
-   yuseisuki3 app layout: top character panel + colorful choices
-   - アプリ再現用。画像生成ではない。
-   - スタート画面は触らない。
-   - ゲーム画面だけ変更。
-   - 上の文字は非表示。
+   yuseisuki3 compact top panel + large centered character
+   - スタート画面は触らない
+   - ゲーム画面だけ変更
+   - 上の文字なし
+   - 上の白い四角の余白を減らす
+   - 選択肢はカラフル維持
    ========================================================= */
 
 @media (orientation: portrait) {
@@ -34,34 +35,31 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
     padding-bottom: max(5px, env(safe-area-inset-bottom)) !important;
   }
 
-  /* 上の白い四角スペース */
   .game-screen:not(.hide) .top-area {
     position: relative !important;
-    height: 31dvh !important;
-    min-height: 31dvh !important;
+    height: 22dvh !important;
+    min-height: 22dvh !important;
     display: block !important;
-    margin: 0 4px 8px !important;
+    margin: 0 4px 7px !important;
     padding: 0 !important;
     overflow: visible !important;
-    background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.9)) !important;
-    border: 8px solid rgba(255,255,255,.95) !important;
-    border-radius: 30px !important;
-    box-shadow: 0 9px 0 rgba(49,69,80,.14), inset 0 0 0 5px rgba(255,214,80,.55) !important;
+    background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.92)) !important;
+    border: 8px solid rgba(255,255,255,.96) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 8px 0 rgba(49,69,80,.14), inset 0 0 0 5px rgba(255,214,80,.55) !important;
   }
 
-  /* 上の文字は使わない */
   .game-screen:not(.hide) .top-area h2 {
     display: none !important;
   }
 
-  /* キャラを四角スペースの上に配置 */
   .game-screen:not(.hide) .dino-wrap {
     position: absolute !important;
     left: 50% !important;
-    top: -62px !important;
-    width: 230px !important;
-    height: 180px !important;
-    transform: translateX(-50%) !important;
+    top: 50% !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: translate(-50%, -50%) !important;
     display: grid !important;
     place-items: center !important;
     overflow: visible !important;
@@ -70,29 +68,27 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
   }
 
   .game-screen:not(.hide) .guide-char {
-    width: 210px !important;
-    height: 210px !important;
+    width: min(68vw, 295px) !important;
+    height: min(68vw, 295px) !important;
     object-fit: contain !important;
     transform: none !important;
     transform-origin: center center !important;
     filter: drop-shadow(0 10px 0 rgba(70,80,90,.09)) !important;
   }
 
-  /* 音ボタンは右上 */
   .game-screen:not(.hide) .sound-btn {
     position: absolute !important;
-    right: 16px !important;
-    top: 18px !important;
-    width: 58px !important;
-    height: 58px !important;
-    border-radius: 19px !important;
+    right: 14px !important;
+    top: 14px !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 18px !important;
     font-size: 26px !important;
     z-index: 7 !important;
   }
 
-  /* 選択肢エリア */
   .game-screen:not(.hide) .choices {
-    height: calc(69dvh - 20px) !important;
+    height: calc(78dvh - 19px) !important;
     min-height: 0 !important;
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
@@ -108,12 +104,10 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
     overflow: hidden !important;
   }
 
-  /* 左カード：グリーン */
   .game-screen:not(.hide) .choice:nth-child(1) {
     background: linear-gradient(180deg, #d9ffbc 0%, #8ee954 100%) !important;
   }
 
-  /* 右カード：オレンジ */
   .game-screen:not(.hide) .choice:nth-child(2) {
     background: linear-gradient(180deg, #ffd875 0%, #ffad35 100%) !important;
   }
@@ -131,10 +125,12 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
   }
 
   .game-screen:not(.hide) .label {
-    font-size: clamp(24px, 7.1vw, 42px) !important;
-    background: rgba(255,255,255,.86) !important;
+    font-size: clamp(22px, 6.4vw, 38px) !important;
+    background: rgba(255,255,255,.88) !important;
     color: rgba(48,64,74,.9) !important;
-    padding: .28em .62em !important;
+    padding: .28em .52em !important;
+    white-space: nowrap !important;
+    max-width: 92% !important;
   }
 
   .game-screen:not(.hide) .adult-check {
@@ -144,35 +140,18 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
   }
 }
 
-/* 縦が狭いSafari用 */
 @media (max-height: 740px) and (orientation: portrait) {
   .game-screen:not(.hide) .top-area {
-    height: 29dvh !important;
-    min-height: 29dvh !important;
-  }
-
-  .game-screen:not(.hide) .dino-wrap {
-    top: -55px !important;
+    height: 20dvh !important;
+    min-height: 20dvh !important;
   }
 
   .game-screen:not(.hide) .guide-char {
-    width: 190px !important;
-    height: 190px !important;
+    width: min(64vw, 265px) !important;
+    height: min(64vw, 265px) !important;
   }
 
   .game-screen:not(.hide) .choices {
-    height: calc(71dvh - 20px) !important;
-  }
-
-  .game-screen:not(.hide) .emoji {
-    font-size: clamp(134px, 40vw, 235px) !important;
-  }
-}
-
-/* 横画面は崩れ防止で控えめ */
-@media (orientation: landscape) {
-  .game-screen:not(.hide) .top-area {
-    height: 26dvh !important;
-    min-height: 26dvh !important;
+    height: calc(80dvh - 19px) !important;
   }
 }
