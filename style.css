@@ -136,10 +136,10 @@ button {
   overflow: visible;
   z-index: 8;
   transform: none !important;
-  animation: none !important;
   pointer-events: none;
 }
 
+/* 軽い動きだけ復活。位置は崩さない */
 .game-screen .guide-char {
   width: min(76vw, 320px);
   height: min(76vw, 320px);
@@ -147,6 +147,16 @@ button {
   transform: translateY(24px);
   transform-origin: center center;
   filter: drop-shadow(0 8px 0 rgba(70,80,90,.08));
+  animation: gentleFloat 2.4s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(24px);
+  }
+  50% {
+    transform: translateY(16px);
+  }
 }
 
 .game-screen .sound-btn {
@@ -272,6 +282,15 @@ button {
     width: min(70vw, 295px);
     height: min(70vw, 295px);
     transform: translateY(22px);
+  }
+
+  @keyframes gentleFloat {
+    0%, 100% {
+      transform: translateY(22px);
+    }
+    50% {
+      transform: translateY(15px);
+    }
   }
 
   .game-screen .choices {
