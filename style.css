@@ -18,12 +18,11 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
 @media (orientation:landscape){.top-area{min-height:24dvh;height:24dvh;grid-template-columns:28% 1fr 50px}.guide-char{width:120px!important;height:120px!important;transform:scale(1.05)!important}.choices{height:auto}.emoji{font-size:clamp(80px,20vw,180px)!important}}
 
 /* =========================================================
-   yuseisuki3 final finish
-   - 文字「ユーセーくんはどっちがすき？」は非表示
-   - キャラクターを大きく中央に表示
-   - 上の余白を削減
-   - 選択肢はカラフル
-   - style.cssのみ差し替え用
+   yuseisuki3 final: lower choices to show character
+   - 文字は非表示
+   - キャラは大きめ維持
+   - 選択肢カードの上側を削って、開始位置を少し下げる
+   - style.cssのみ差し替え
    ========================================================= */
 
 @media (orientation: portrait) {
@@ -42,11 +41,12 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
     display: block !important;
     margin: 0 4px 7px !important;
     padding: 0 !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     background: linear-gradient(180deg, #fff7cc 0%, #ffeaa7 100%) !important;
     border: 8px solid rgba(255,255,255,.96) !important;
     border-radius: 28px !important;
     box-shadow: 0 8px 0 rgba(49,69,80,.14), inset 0 0 0 5px rgba(255,214,80,.55) !important;
+    z-index: 4 !important;
   }
 
   .game-screen:not(.hide) .top-area h2,
@@ -62,16 +62,17 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
     display: grid !important;
     place-items: center !important;
     overflow: visible !important;
-    z-index: 6 !important;
+    z-index: 8 !important;
     transform: none !important;
     animation: none !important;
+    pointer-events: none !important;
   }
 
   .game-screen:not(.hide) .guide-char {
-    width: min(78vw, 330px) !important;
-    height: min(78vw, 330px) !important;
+    width: min(76vw, 320px) !important;
+    height: min(76vw, 320px) !important;
     object-fit: contain !important;
-    transform: none !important;
+    transform: translateY(20px) !important;
     transform-origin: center center !important;
     filter: drop-shadow(0 8px 0 rgba(70,80,90,.08)) !important;
   }
@@ -84,17 +85,20 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
     height: 54px !important;
     border-radius: 18px !important;
     font-size: 25px !important;
-    z-index: 7 !important;
+    z-index: 9 !important;
   }
 
+  /* ここが本命：選択肢の上を削って、カードを少し下げる */
   .game-screen:not(.hide) .choices {
-    height: calc(78dvh - 19px) !important;
+    height: calc(78dvh - 42px) !important;
     min-height: 0 !important;
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 8px !important;
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 24px 0 0 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
   }
 
   .game-screen:not(.hide) .choice {
@@ -140,17 +144,15 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
   }
 }
 
+/* ホーム画面保存版で縦が広い時 */
 @media (min-height: 741px) and (orientation: portrait) {
-  .game-screen:not(.hide) .top-area {
-    height: 21dvh !important;
-    min-height: 21dvh !important;
-  }
-
   .game-screen:not(.hide) .choices {
-    height: calc(79dvh - 19px) !important;
+    height: calc(79dvh - 44px) !important;
+    margin-top: 24px !important;
   }
 }
 
+/* Safariのアドレスバー表示で縦が狭い時 */
 @media (max-height: 740px) and (orientation: portrait) {
   .game-screen:not(.hide) .top-area {
     height: 20dvh !important;
@@ -160,9 +162,11 @@ h2{margin:0;text-align:center;font-size:clamp(24px,7vw,42px)!important;line-heig
   .game-screen:not(.hide) .guide-char {
     width: min(70vw, 295px) !important;
     height: min(70vw, 295px) !important;
+    transform: translateY(18px) !important;
   }
 
   .game-screen:not(.hide) .choices {
-    height: calc(80dvh - 19px) !important;
+    height: calc(80dvh - 40px) !important;
+    margin-top: 22px !important;
   }
 }
