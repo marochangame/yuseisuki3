@@ -38,7 +38,6 @@
   ];
   let lastCharacterIndex = -1;
 
-
   const $ = (id) => document.getElementById(id);
   const startScreen = $("startScreen");
   const gameScreen = $("gameScreen");
@@ -57,11 +56,35 @@
   const soundBtn = $("soundBtn");
   const guideChar = $("guideChar");
 
+  let questionText = null;
   let currentPair = pairs[0];
   let busy = false;
   let lastIndex = 0;
   let audioCtx = null;
   let jpVoice = null;
+
+  function ensureQuestionText() {
+    if (questionText) return questionText;
+
+    const topArea = document.querySelector(".top-area");
+    if (!topArea) return null;
+
+    questionText = document.createElement("div");
+    questionText.id = "questionText";
+    questionText.className = "question-text";
+    topArea.appendChild(questionText);
+    return questionText;
+  }
+
+  function getQuestionLine() {
+    return `${currentPair[0].name} と ${currentPair[1].name} どっちがすき？`;
+  }
+
+  function updateQuestionText() {
+    const el = ensureQuestionText();
+    if (!el) return;
+    el.textContent = getQuestionLine();
+  }
 
   function setupVoice() {
     if (!("speechSynthesis" in window)) return;
@@ -123,7 +146,6 @@
 
       speechSynthesis.speak(u);
 
-      // iOSでonendが返らない時の保険。短文用。
       if (onend) {
         const fallbackMs = Math.max(900, text.length * 140);
         setTimeout(() => {
@@ -157,14 +179,13 @@
   function playStartThenShowGame() {
     ensureAudio();
 
-    // final-safe：開始音声は短く「はじめるよー！」だけ。
-    // 読み上げが途中で切れたり、長文の一部だけ残ったりしないようにする。
     let switched = false;
     const switchToGame = () => {
       if (switched) return;
       switched = true;
       startScreen.classList.add("hide");
       gameScreen.setAttribute("aria-hidden", "false");
+      updateQuestionText();
       setTimeout(playQuestionSound, 400);
     };
 
@@ -176,10 +197,8 @@
       onend: switchToGame
     });
 
-    // iOSでonendが返らない時の保険。短文なので1.4秒で切り替え。
     setTimeout(switchToGame, 1400);
 
-    // 声を邪魔しない小さな開始効果音。
     beep(784, .06, 0.04, .02);
     beep(1046, .08, 0.24, .018);
   }
@@ -196,14 +215,12 @@
   }
 
   function playChoiceSound(chosenName) {
-    // 効果音
     beep(880, .07, 0.00, .08);
     beep(1175, .09, 0.09, .075);
     beep(1568, .14, 0.21, .055);
 
     const line = reactions[Math.floor(Math.random() * reactions.length)];
 
-    // 効果音の後に声。ここは短く。
     setTimeout(() => {
       speak(`${chosenName}、${line}`, {
         rate: 1.03,
@@ -231,6 +248,7 @@
     leftLabel.textContent = currentPair[0].name;
     rightLabel.textContent = currentPair[1].name;
     adultPair.textContent = `${currentPair[0].name} / ${currentPair[1].name}`;
+    updateQuestionText();
   }
 
   function pickPair() {
