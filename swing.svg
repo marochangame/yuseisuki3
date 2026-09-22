@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">ブランコ</title>
+  <desc id="desc">公園のブランコのイラスト</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eef9ff"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff8f66"/>
+      <stop offset="100%" stop-color="#ff5f6d"/>
+    </linearGradient>
+    <linearGradient id="seat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#58a0ff"/>
+      <stop offset="100%" stop-color="#2c6bdb"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="320" rx="52" fill="url(#sky)"/>
+  <ellipse cx="160" cy="271" rx="112" ry="18" fill="#dff5c8"/>
+  <path d="M72 255 L122 78" stroke="url(#frame)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M248 255 L198 78" stroke="url(#frame)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M108 90 H212" stroke="url(#frame)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M108 90 H212" stroke="#ffd6c8" stroke-width="6" stroke-linecap="round" opacity=".65"/>
+  <path d="M134 100 V188" stroke="#8a6b54" stroke-width="6" stroke-linecap="round"/>
+  <path d="M186 100 V188" stroke="#8a6b54" stroke-width="6" stroke-linecap="round"/>
+  <rect x="122" y="184" width="76" height="18" rx="9" fill="url(#seat)"/>
+  <rect x="126" y="188" width="68" height="9" rx="4.5" fill="#a9d3ff" opacity=".55"/>
+  <circle cx="134" cy="100" r="7" fill="#ffd45c"/>
+  <circle cx="186" cy="100" r="7" fill="#ffd45c"/>
+  <circle cx="89" cy="262" r="8" fill="#7fd06c" opacity=".9"/>
+  <circle cx="230" cy="266" r="7" fill="#84d2ff" opacity=".85"/>
+  <circle cx="252" cy="256" r="6" fill="#ffb0c4" opacity=".8"/>
+</svg>

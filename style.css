@@ -300,13 +300,38 @@ button:focus-visible {
   text-overflow: ellipsis;
 }
 
+
+.emoji-img {
+  width: min(100%, 240px);
+  max-height: min(42vh, 270px);
+  object-fit: contain;
+  filter: drop-shadow(0 8px 0 rgba(70,80,90,.08));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.finish-reaction {
+  align-items: center;
+  padding-top: 0;
+}
+
+.finish-reaction .reaction-text {
+  display: none;
+}
+
+.finish-reaction .burst {
+  top: 46%;
+}
+
 /* 選択リアクション */
 .reaction {
   position: fixed;
   inset: 0;
   z-index: 50;
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: start;
+  padding-top: clamp(150px, 23dvh, 235px);
   pointer-events: none;
   opacity: 0;
   transition: opacity .12s ease;
@@ -319,14 +344,14 @@ button:focus-visible {
 .reaction-text {
   position: relative;
   z-index: 3;
-  padding: .35em .65em .42em;
+  padding: .32em .6em .38em;
   border-radius: 999px;
-  background: rgba(255,255,255,.96);
+  background: rgba(255,255,255,.97);
   color: #2d3840;
-  font-size: clamp(38px, 11vw, 72px);
+  font-size: clamp(30px, 8.2vw, 56px);
   font-weight: 900;
   line-height: 1;
-  box-shadow: 0 10px 0 rgba(49,69,80,.13);
+  box-shadow: 0 8px 0 rgba(49,69,80,.13);
   transform: scale(.65) rotate(-3deg);
 }
 

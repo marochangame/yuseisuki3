@@ -1,4 +1,4 @@
-const CACHE_NAME = "yuseisuki-v21-five-questions";
+const CACHE_NAME = "yuseisuki-v22-ui-fixes";
 const ASSETS = [
   "./",
   "./index.html",
@@ -14,7 +14,8 @@ const ASSETS = [
   "./char_5.png",
   "./char_6.png",
   "./char_7.png",
-  "./char_8.png"
+  "./char_8.png",
+  "./swing.svg"
 ];
 
 self.addEventListener("install", event => {

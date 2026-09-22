@@ -35,7 +35,7 @@
     {category:"あそび", a:{id:"drum", name:"たいこ", emoji:"🥁"}, b:{id:"trumpet", name:"ラッパ", emoji:"🎺"}},
     {category:"あそび", a:{id:"book", name:"えほん", emoji:"📖"}, b:{id:"blocks", name:"つみき", emoji:"🧱"}},
     {category:"あそび", a:{id:"paint", name:"おえかき", emoji:"🎨"}, b:{id:"puzzle", name:"パズル", emoji:"🧩"}},
-    {category:"あそび", a:{id:"slide", name:"すべりだい", emoji:"🛝"}, b:{id:"swing", name:"ブランコ", emoji:"🎠"}},
+    {category:"あそび", a:{id:"slide", name:"すべりだい", emoji:"🛝"}, b:{id:"swing", name:"ブランコ", icon:"swing.svg"}},
     {category:"あそび", a:{id:"soccer", name:"サッカー", emoji:"⚽"}, b:{id:"baseball", name:"やきゅう", emoji:"⚾"}},
     {category:"あそび", a:{id:"music", name:"おんがく", emoji:"🎵"}, b:{id:"movie", name:"えいが", emoji:"🎬"}},
 
@@ -195,6 +195,23 @@
     osc.stop(t + duration + 0.03);
   }
 
+
+  function setChoiceVisual(el, choice) {
+    el.innerHTML = "";
+
+    if (choice.icon) {
+      const img = document.createElement("img");
+      img.src = choice.icon;
+      img.alt = choice.name;
+      img.className = "emoji-img";
+      img.draggable = false;
+      el.appendChild(img);
+      return;
+    }
+
+    el.textContent = choice.emoji || choice.name;
+  }
+
   function pickGuideCharacter() {
     let i = Math.floor(Math.random() * guideCharacters.length);
     if (guideCharacters.length > 1 && i === lastCharacterIndex) {
@@ -211,8 +228,8 @@
       ? [currentPair.a, currentPair.b]
       : [currentPair.b, currentPair.a];
 
-    leftEmoji.textContent = currentChoices[0].emoji;
-    rightEmoji.textContent = currentChoices[1].emoji;
+    setChoiceVisual(leftEmoji, currentChoices[0]);
+    setChoiceVisual(rightEmoji, currentChoices[1]);
     leftLabel.textContent = currentChoices[0].name;
     rightLabel.textContent = currentChoices[1].name;
     questionText.textContent = `${currentChoices[0].name} と ${currentChoices[1].name} どっちがすき？`;
@@ -273,7 +290,6 @@
     finishScreen.setAttribute("aria-hidden", "false");
 
     makeBurst(true);
-    reactionText.textContent = "できたね！";
     reaction.classList.add("show", "finish-reaction");
     beep(784, .08, 0.00, .06);
     beep(988, .08, 0.12, .06);
