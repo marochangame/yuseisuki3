@@ -1,4 +1,4 @@
-const CACHE_NAME = "yuseisuki-v22-ui-fixes";
+const CACHE_NAME = "yuseisuki-v23-reaction-baseball";
 const ASSETS = [
   "./",
   "./index.html",
@@ -15,7 +15,8 @@ const ASSETS = [
   "./char_6.png",
   "./char_7.png",
   "./char_8.png",
-  "./swing.svg"
+  "./swing.svg",
+  "./baseball.svg"
 ];
 
 self.addEventListener("install", event => {

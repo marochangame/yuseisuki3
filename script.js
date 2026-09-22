@@ -36,7 +36,7 @@
     {category:"あそび", a:{id:"book", name:"えほん", emoji:"📖"}, b:{id:"blocks", name:"つみき", emoji:"🧱"}},
     {category:"あそび", a:{id:"paint", name:"おえかき", emoji:"🎨"}, b:{id:"puzzle", name:"パズル", emoji:"🧩"}},
     {category:"あそび", a:{id:"slide", name:"すべりだい", emoji:"🛝"}, b:{id:"swing", name:"ブランコ", icon:"swing.svg"}},
-    {category:"あそび", a:{id:"soccer", name:"サッカー", emoji:"⚽"}, b:{id:"baseball", name:"やきゅう", emoji:"⚾"}},
+    {category:"あそび", a:{id:"soccer", name:"サッカー", emoji:"⚽"}, b:{id:"baseball", name:"やきゅう", icon:"baseball.svg"}},
     {category:"あそび", a:{id:"music", name:"おんがく", emoji:"🎵"}, b:{id:"movie", name:"えいが", emoji:"🎬"}},
 
     {category:"しぜん", a:{id:"sun", name:"おひさま", emoji:"☀️"}, b:{id:"moon", name:"おつきさま", emoji:"🌙"}},
