@@ -331,7 +331,7 @@ button:focus-visible {
   display: grid;
   justify-items: center;
   align-items: start;
-  padding-top: clamp(220px, 31dvh, 315px);
+  padding-top: clamp(280px, 39dvh, 400px);
   pointer-events: none;
   opacity: 0;
   transition: opacity .12s ease;
