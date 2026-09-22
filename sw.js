@@ -1,4 +1,4 @@
-const CACHE_NAME = "yuseisuki-v26-more-questions";
+const CACHE_NAME = "yuseisuki-v27-more-food-animals";
 const ASSETS = [
   "./",
   "./index.html",
