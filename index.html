@@ -26,14 +26,15 @@
 
     <section class="game-screen" id="gameScreen" aria-hidden="true">
       <section class="top-area">
+        <div class="progress-pill" id="progressText" aria-live="polite">1 / 5</div>
         <div class="dino-wrap" id="dinoWrap" aria-hidden="true">
           <img id="guideChar" class="guide-char" src="char_1.png" alt="">
         </div>
-        <h2>ユーセーくんは<br>どっちがすき？</h2>
+        <div class="question-text" id="questionText">りんご と バナナ どっちがすき？</div>
         <button class="sound-btn" id="soundBtn" type="button" aria-label="もういちどきく">🔊</button>
       </section>
 
-      <section class="choices">
+      <section class="choices" aria-label="すきなほうをえらぶ">
         <button class="choice" id="leftChoice" type="button">
           <span class="emoji" id="leftEmoji">🍎</span>
           <span class="label" id="leftLabel">りんご</span>
@@ -43,8 +44,16 @@
           <span class="label" id="rightLabel">バナナ</span>
         </button>
       </section>
+    </section>
 
-      <div class="adult-check">いま：<span id="adultPair">りんご / バナナ</span></div>
+    <section class="finish-screen hide" id="finishScreen" aria-hidden="true">
+      <div class="finish-card">
+        <div class="finish-stars" aria-hidden="true">⭐️ ✨ ⭐️</div>
+        <img src="icon-192.png" class="finish-icon" alt="ユーセー君">
+        <h2>できたね！</h2>
+        <p>5もん ぜんぶ えらべたよ！</p>
+        <button id="againBtn" class="again-btn" type="button">もういっかい</button>
+      </div>
     </section>
 
     <div class="reaction" id="reaction" aria-hidden="true">

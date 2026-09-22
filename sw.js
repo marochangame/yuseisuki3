@@ -1,4 +1,4 @@
-const CACHE_NAME = "yuseisuki-v20-adopted-layout";
+const CACHE_NAME = "yuseisuki-v21-five-questions";
 const ASSETS = [
   "./",
   "./index.html",
